@@ -1,7 +1,7 @@
 /** @jsx h */
 
 import { h, tw } from "../deps.ts";
-import { DenoLogo } from "./Logo.tsx";
+import { HyperLogo } from "./Logo.tsx";
 
 export function Header(props: { noSubtitle?: boolean }) {
   return (
@@ -13,13 +13,13 @@ export function Header(props: { noSubtitle?: boolean }) {
         class={tw`flex items-center flex-shrink-0`}
         href="/"
       >
-        <DenoLogo />
+        <HyperLogo />
         <span
           class={tw
             `ml-4 flex items-baseline gap-x-1 flex-col sm:flex-row tracking-tighter`}
         >
           <span class={tw`text(2xl gray-900) font-bold leading-none`}>
-            Deno
+            Hyper
           </span>
           {!props.noSubtitle &&
             (
@@ -34,16 +34,16 @@ export function Header(props: { noSubtitle?: boolean }) {
       </a>
       <div class={tw`flex items-center gap-6`}>
         <a
-          href="https://deno.land/manual"
+          href="https://docs.hyper.io/cloud"
           class={tw`hover:underline focus:underline`}
         >
-          Manual
+          Documentation
         </a>
         <a
-          href="https://doc.deno.land/builtin/stable"
+          href="https://dashboard.hyper.io"
           class={tw`hover:underline focus:underline`}
         >
-          API
+          Dashboard
         </a>
       </div>
     </header>

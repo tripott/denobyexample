@@ -17,8 +17,8 @@ export function Page(props: {
       <Head>
         <link
           rel="shortcut icon"
-          href="/favicon.ico"
-          type="image/x-icon"
+          href="/logo.svg"
+          type="image/svg"
         />
         <title>{props.title}</title>
       </Head>
