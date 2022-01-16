@@ -1,6 +1,6 @@
-# Deno by Example
+# hyper by Example
 
-This repository contains the source code for https://examples.deno.land/.
+This repository contains the source code for https://examples.hyper.io/.
 
 Deno by Example is a collection of small snippets showcasing various functions
 of the APIs implemented in Deno.
