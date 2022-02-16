@@ -3,15 +3,14 @@
  * @difficulty beginner
  * @tags cli, deploy, web
  * @run --allow-read --allow-env --allow-net <url>
- * @resource {https://dashboard.hyper.io} Hyper Cloud Dashboard
- * @resource {https://docs.hyper.io/cloud/applications} Hyper Applications
- * @resource {https://docs.hyper.io/cloud/applications#zl-creating-a-new-hyper-application} Creating a New Hyper Application
- * @resource {https://docs.hyper.io/cloud/app-keys} App Keys and Connection Strings
- * 
+ * @resource {https://dashboard.hyper.io} hyper cloud dashboard
+ * @resource {https://docs.hyper.io/cloud/applications} hyper applications
+ * @resource {https://docs.hyper.io/cloud/applications#zl-creating-a-new-hyper-application} Creating a new hyper application
+ * @resource {https://docs.hyper.io/cloud/app-keys} App keys and connection strings
+ * @resource {https://docs.hyper.io/cloud/data-api} hyper data API
+ * @resource {https://docs.hyper.io/cloud/cache-api} hyper cache API
  */
 // deno-lint-ignore-file no-explicit-any
-
-// Run sample in terminal: deno run --allow-net --allow-read --allow-env data/compose-data-cache-simple.ts
 
 // import hyper connect
 import { connect } from 'https://x.nest.land/hyper-connect@0.1.14/deno/mod.ts'
