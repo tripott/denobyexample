@@ -32,6 +32,19 @@ interface AddResponse {
   ok: boolean
 }
 
+interface Game {
+  _id: string;
+  type: string; 
+  name: string; 
+}
+
+interface GamesListResult {
+  ok: boolean;
+  docs: Array<Game>;
+}
+
+type Unknown = unknown;
+
 // passValueThru is a helper function that logs the incoming value and returns the same value.
 const passValueThru = (x: any) => {
   console.log('passValueThru:', x)
@@ -41,17 +54,17 @@ const passValueThru = (x: any) => {
 // addDocToDB is a helper function that takes a document, adds a document to the hyper data service and if all goes well, returns the doc down the chain.  
 // This way we can cache the doc later in the addDocToCache function.
 // If the database has a problem with the doc, such as a document conflict, we Promise.reject.
-const addDocToDB = (doc: any) =>
-  hyper.data.add(doc).then((res: AddResponse) => {
-    console.log('addDocToDB res', res)
-    return res.ok ? doc : Promise.reject(res)
+const addGameToDB = (game: Game) =>
+  hyper.data.add(game).then((res: AddResponse) => {
+    console.log('addDocToDB res', res, game)
+    return res.ok ? game : Promise.reject(res)
   })
 
 // addDocToCache is a helper function that takes a document,
 //  and adds the doc to the cache service with an expire date (ttl) of 1 day.
 //  Whatever happens, we pass the result down the chain
-const addDocToCache = (doc: any) =>
-  hyper.cache.add(doc._id, doc, '1d')
+const addGameToCache = (game: Game) =>
+  hyper.cache.add(game._id, game, '1d')
 
 // returnErrorResponse is a helper function that takes an error,
 //  and returns a consistenly shaped ErrorResponse
@@ -67,19 +80,19 @@ function returnErrorResponse (err: any) : ErrorResponse {
 // addDocAndCache process a document through a promise chain.
 // The doc is added to the data service then cached. 
 // If an error occurs, an consistent error is formatted and returned.
-const addDocAndCache = (doc: any) =>
-  Promise.resolve(doc)
-    .then(addDocToDB)
-    .then(addDocToCache, passValueThru)
+const addDocAndCache = (game: Game) =>
+  Promise.resolve(game)
+    .then(addGameToDB)
+    .then(addGameToCache, passValueThru)
     .then(passValueThru)
     .catch(returnErrorResponse)
 
-const result = await addDocAndCache({ _id: "game-1", type: "game", name: "Defender" })
+const result = await addDocAndCache({ _id: "game-12", type: "game", name: "Lunar Lander" })
 console.log(result)
 
 // lists the docs in the data service
-const listDocs = () => hyper.data.list({limit:100})
+const listGames = (): GamesListResult | Unknown  => hyper.data.list({limit:100})
 
-const list = await listDocs()
+const games = await listGames()
 
-console.log(list)
+console.log(games)
