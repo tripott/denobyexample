@@ -1,3 +1,3 @@
 export const TOC = [
-  "hello-world",
+  "hello-world", "compose-data-cache-simple"
 ];
